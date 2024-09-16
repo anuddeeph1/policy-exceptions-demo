@@ -1,0 +1,51 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2024-09-23T183853Z
+  name: policy-exc-req-s6943y7497q-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: disallow-privilege-escalation
+    ruleNames:
+    - privilege-escalation
+    - autogen-privilege-escalation
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - coredns
+        namespaces:
+        - kube-system
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - kindnet-78wrv
+        - kube-controller-manager-kind-control-plane
+        - kube-scheduler-kind-control-plane
+        - kube-apiserver-kind-control-plane
+        - etcd-kind-control-plane
+        - coredns-6f6b679f8f-zlzxs
+        - kube-proxy-lqzk5
+        - coredns-6f6b679f8f-tf8tg
+        namespaces:
+        - kube-system
+    - resources:
+        kinds:
+        - DaemonSet
+        names:
+        - kindnet
+        - kube-proxy
+        namespaces:
+        - kube-system
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - coredns-6f6b679f8f
+        namespaces:
+        - kube-system
