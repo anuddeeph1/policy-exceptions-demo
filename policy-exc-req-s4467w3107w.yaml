@@ -1,0 +1,59 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2024-10-15T174502Z
+  name: policy-exc-req-s4467w3107w-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: restrict-automount-sa-token
+    ruleNames:
+    - autogen-validate-automountServiceAccountToken
+    - validate-automountServiceAccountToken
+  match:
+    any:
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - argocd-notifications-controller-6847bd5c98
+        - argocd-redis-f9db77795
+        - argocd-dex-server-6d64fcc4fc
+        - argocd-server-59775fbfb5
+        - argocd-repo-server-7fcf5f5654
+        - argocd-applicationset-controller-587b5c864b
+        namespaces:
+        - argocd
+    - resources:
+        kinds:
+        - StatefulSet
+        names:
+        - argocd-application-controller
+        namespaces:
+        - argocd
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - argocd-redis
+        - argocd-applicationset-controller
+        - argocd-repo-server
+        - argocd-server
+        - argocd-notifications-controller
+        - argocd-dex-server
+        namespaces:
+        - argocd
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - argocd-dex-server-6d64fcc4fc-k695h
+        - argocd-application-controller-0
+        - argocd-notifications-controller-6847bd5c98-2bvdp
+        - argocd-applicationset-controller-587b5c864b-7bvwb
+        - argocd-redis-f9db77795-6bktr
+        - argocd-repo-server-7fcf5f5654-8pcbq
+        - argocd-server-59775fbfb5-q5qd8
+        namespaces:
+        - argocd
