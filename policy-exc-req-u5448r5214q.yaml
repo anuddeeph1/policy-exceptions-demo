@@ -1,0 +1,89 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2024-11-21T161043Z
+  name: policy-exc-req-u5448r5214q-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: restrict-automount-sa-token
+    ruleNames:
+    - validate-automountServiceAccountToken
+    - autogen-validate-automountServiceAccountToken
+  match:
+    any:
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - argocd-dex-server-5fc55c854b-hqbjk
+        - argocd-notifications-controller-57ccdd9c65-wtldf
+        - argocd-redis-f75b47877-skxfw
+        - argocd-server-55c758c594-zkj5k
+        - argocd-application-controller-0
+        - argocd-repo-server-5b6cc84677-spckd
+        - argocd-applicationset-controller-b498b87dd-c2wrw
+        namespaces:
+        - argocd
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - argocd-notifications-controller-57ccdd9c65
+        - argocd-repo-server-86cf7f8c97
+        - argocd-applicationset-controller-76dccfb9cb
+        - argocd-server-55c758c594
+        - argocd-server-6cb4857878
+        - argocd-repo-server-56678c48cd
+        - argocd-redis-798ddc7b9d
+        - argocd-server-76789574
+        - argocd-dex-server-5c565d88c5
+        - argocd-dex-server-77cc54bbb6
+        - argocd-applicationset-controller-6486fcf7bc
+        - argocd-dex-server-98f6b6c59
+        - argocd-redis-6bf6c6656f
+        - argocd-repo-server-5c9cdf7998
+        - argocd-redis-67b98985b6
+        - argocd-applicationset-controller-86b78fd7f5
+        - argocd-repo-server-7dcdc9795c
+        - argocd-server-6ff6cbb6ff
+        - argocd-notifications-controller-57fc9cc65d
+        - argocd-applicationset-controller-b498b87dd
+        - argocd-dex-server-5bff97d64b
+        - argocd-applicationset-controller-6d9ff75ff
+        - argocd-notifications-controller-768d4fb777
+        - argocd-server-744ffb596c
+        - argocd-repo-server-f749b4f98
+        - argocd-redis-b48d7bf98
+        - argocd-repo-server-5b6cc84677
+        - argocd-dex-server-7c9f5d8bcf
+        - argocd-notifications-controller-56fbd84bcc
+        - argocd-applicationset-controller-7bd467fbfb
+        - argocd-notifications-controller-68796855cd
+        - argocd-server-5d79b9947f
+        - argocd-redis-75cc95b5c7
+        - argocd-notifications-controller-86576d84bb
+        - argocd-redis-f75b47877
+        - argocd-dex-server-5fc55c854b
+        namespaces:
+        - argocd
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - argocd-redis
+        - argocd-notifications-controller
+        - argocd-dex-server
+        - argocd-applicationset-controller
+        - argocd-server
+        - argocd-repo-server
+        namespaces:
+        - argocd
+    - resources:
+        kinds:
+        - StatefulSet
+        names:
+        - argocd-application-controller
+        namespaces:
+        - argocd
